@@ -14,5 +14,29 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+
+// iframe proxies
+
+Route::get('/deportes_envivo_proxy', function () {
+    $url = 'https://casino-fortunato.com/front/deportes_envivos';
+    $content = file_get_contents($url);
+
+    return response($content)->header('Content-Type', 'text/html');
+});
+
+Route::get('/recomendados_proxy', function () {
+    $url = 'https://casino-fortunato.com/front/deportes_recomendados';
+    $content = file_get_contents($url);
+
+    return response($content)->header('Content-Type', 'text/html');
+});
+
+
+Route::get('/proximos_proxy', function () {
+    $url = 'https://casino-fortunato.com/front/deportes_proximos';
+    $content = file_get_contents($url);
+
+    return response($content)->header('Content-Type', 'text/html');
 });
